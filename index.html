@@ -572,14 +572,15 @@
             });
         }
 
-        fetch('https://api.counterapi.dev/v1/championship-old-rally-src/visitas/up')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('numero-visitas').textContent = data.count;
-            })
-            .catch(() => {
-                document.getElementById('numero-visitas').textContent = '+100';
-            });
+// CONTADOR LOCAL
+try {
+    let visitas = localStorage.getItem('visitas_rally_src') || 100;
+    visitas = parseInt(visitas) + 1;
+    localStorage.setItem('visitas_rally_src', visitas);
+    document.getElementById('numero-visitas').textContent = visitas;
+} catch (e) {
+    document.getElementById('numero-visitas').textContent = '100+';
+}
     </script>
 </body>
 </html>
