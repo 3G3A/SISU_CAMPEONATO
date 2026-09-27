@@ -21,25 +21,23 @@
 
     <div class="max-w-5xl mx-auto w-full">
         <!-- Cabecera -->
-    <header class="text-center mb-6 border-b border-gray-800 pb-6 flex flex-col items-center">
-        <!-- Contenedor de Logos Centrados -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4 w-full">
-            <img src="logo_src.png" alt="SRC Logo" class="w-56 md:w-72 max-w-full h-auto object-contain drop-shadow-lg">
-            <div class="hidden sm:block h-12 w-px bg-gray-700"></div> <!-- Línea divisora sutil -->
-            <img src="logo_rbr.png" alt="RBR Logo" class="w-56 md:w-72 max-w-full h-auto object-contain drop-shadow-lg">
-        </div>
+        <header class="text-center mb-6 border-b border-gray-800 pb-6 flex flex-col items-center">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4 w-full">
+                <img src="logo_src.png" alt="SRC Logo" class="w-56 md:w-72 max-w-full h-auto object-contain drop-shadow-lg">
+                <div class="hidden sm:block h-12 w-px bg-gray-700"></div>
+                <img src="logo_rbr.png" alt="RBR Logo" class="w-56 md:w-72 max-w-full h-auto object-contain drop-shadow-lg">
+            </div>
 
-        <h1 class="text-3xl md:text-5xl font-extrabold text-yellow-500 uppercase tracking-wider mb-2">
-            Championship Old Rally
-        </h1>
-        <p class="text-gray-400 text-sm md:text-base">🔰 Tiempos y clasificaciones oficiales. RESULTADOS DOMINGO: 19:00H Aprox 🔰</p>
-    </header>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-yellow-500 uppercase tracking-wider mb-2">
+                Championship Old Rally
+            </h1>
+            <p class="text-gray-400 text-sm md:text-base">🔰 Tiempos y clasificaciones oficiales. RESULTADOS DOMINGO: 19:00H Aprox 🔰</p>
+        </header>
 
         <!-- Imagen de la Placa del Rally y Botón de Enlace -->
         <div id="contenedor-placa" class="flex flex-col items-center mb-6 hidden">
             <img id="imagen-placa" src="" alt="Placa del Rally" class="max-h-48 md:max-h-64 object-contain drop-shadow-xl rounded-lg mb-4">
             
-            <!-- Botón de acceso directo al Rally -->
             <a id="btn-link-rally" href="#" target="_blank" class="hidden inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-extrabold px-6 py-2.5 rounded-full transition-all shadow-lg hover:scale-105 uppercase text-xs md:text-sm tracking-wide">
                 <span>🏁​</span> ROADBOOK
             </a>
@@ -56,17 +54,19 @@
                     class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
                     Clasificación General
                 </button>
+                <button id="btn-noticias" onclick="cambiarPestana('noticias')" 
+                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                    Noticias
+                </button>
                 <button id="btn-info" onclick="cambiarPestana('info')" 
                     class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
                     Información
                 </button>
             </div>
 
-            <!-- Selector para consultar rallies -->
             <div id="select-rally-container" class="flex items-center gap-2">
                 <label for="select-rally" class="text-sm font-semibold text-gray-300">Ver Rally:</label>
                 <select id="select-rally" onchange="seleccionarRally(this.value)" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg p-2.5 focus:ring-yellow-500 focus:border-yellow-500 font-semibold">
-                    <!-- Se llena automáticamente -->
                 </select>
             </div>
         </div>
@@ -78,7 +78,6 @@
                     <span>🏁</span> Resultados del Rally
                 </h2>
 
-                <!-- Sub-Filtros de Categorías para Rally -->
                 <div class="flex flex-wrap gap-2">
                     <button id="btn-cat-todas" onclick="filtrarCategoriaRally('TODAS')" class="active-subtab border px-3 py-1 rounded-md text-xs font-bold transition-all">
                         GENERAL
@@ -123,7 +122,6 @@
                     <span>🏆</span> Tabla General del Campeonato
                 </h2>
 
-                <!-- Sub-Filtros de Categorías para la Clasificación General -->
                 <div class="flex flex-wrap gap-2">
                     <button id="btn-gen-todas" onclick="filtrarCategoriaGeneral('TODAS')" class="active-subtab border px-3 py-1 rounded-md text-xs font-bold transition-all">
                         GENERAL
@@ -159,9 +157,18 @@
             </div>
         </div>
 
+        <!-- SECCIÓN: NOTICIAS / COMUNICADOS -->
+        <div id="vista-noticias" class="bg-gray-800 rounded-xl p-4 md:p-6 shadow-2xl border border-gray-700 hidden">
+            <h2 class="text-xl font-bold text-yellow-400 flex items-center gap-2 mb-6 border-b border-gray-700 pb-3">
+                <span>📢</span> Comunicados y Noticias Oficiales
+            </h2>
+            <div id="contenedor-noticias" class="space-y-4">
+                <p class="text-gray-400 p-4 text-center">Cargando noticias...</p>
+            </div>
+        </div>
+
         <!-- SECCIÓN: INFORMACIÓN DEL CAMPEONATO -->
         <div id="vista-info" class="bg-gray-800 rounded-xl p-6 md:p-8 shadow-2xl border border-gray-700 hidden text-gray-300 space-y-8">
-            <!-- Sección Español -->
             <div>
                 <h2 class="text-xl font-bold text-yellow-400 border-b border-gray-700 pb-2 mb-4 flex items-center gap-2">
                     <span>📌</span> ESP - INFORMACIÓN DEL CAMPEONATO
@@ -193,10 +200,8 @@
                 </p>
             </div>
 
-            <!-- Separador -->
             <hr class="border-gray-700/60">
 
-            <!-- Sección Inglés -->
             <div>
                 <h2 class="text-xl font-bold text-yellow-400 border-b border-gray-700 pb-2 mb-4 flex items-center gap-2">
                     <span>🌐</span> ENG - CHAMPIONSHIP INFORMATION
@@ -230,14 +235,14 @@
         </div>
     </div>
 
-    <!-- FOOTER CON CONTADOR DE VISITAS EN TEXTO -->
-<footer class="mt-12 pt-6 border-t border-gray-800 text-center text-xs text-gray-500 flex flex-col items-center gap-2">
-    <p>© Championship Old Rally - RBR RSF League</p>
-    <div class="flex items-center gap-2 bg-gray-800/80 px-4 py-1.5 rounded-full border border-gray-700 text-gray-300 font-semibold">
-        <span>👁️ Visitas a la web:</span>
-        <span id="numero-visitas" class="text-yellow-400 font-mono">Cargando...</span>
-    </div>
-</footer>
+    <!-- FOOTER CON CONTADOR DE VISITAS -->
+    <footer class="mt-12 pt-6 border-t border-gray-800 text-center text-xs text-gray-500 flex flex-col items-center gap-2">
+        <p>© Championship Old Rally - RBR RSF League</p>
+        <div class="flex items-center gap-2 bg-gray-800/80 px-4 py-1.5 rounded-full border border-gray-700 text-gray-300 font-semibold">
+            <span>👁️ Visitas a la web:</span>
+            <span id="numero-visitas" class="text-yellow-400 font-mono">Cargando...</span>
+        </div>
+    </footer>
 
     <script>
         let configGlobal = null;
@@ -251,37 +256,85 @@
         function cambiarPestana(vista) {
             const btnRally = document.getElementById('btn-rally');
             const btnGeneral = document.getElementById('btn-general');
+            const btnNoticias = document.getElementById('btn-noticias');
             const btnInfo = document.getElementById('btn-info');
+            
             const vistaRally = document.getElementById('vista-rally');
             const vistaGeneral = document.getElementById('vista-general');
+            const vistaNoticias = document.getElementById('vista-noticias');
             const vistaInfo = document.getElementById('vista-info');
+            
             const contPlaca = document.getElementById('contenedor-placa');
             const selectorCont = document.getElementById('select-rally-container');
 
-            btnRally.className = 'bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
-            btnGeneral.className = 'bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
-            btnInfo.className = 'bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
+            const claseInactiva = 'bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
+            const claseActiva = 'active-tab px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
+
+            btnRally.className = claseInactiva;
+            btnGeneral.className = claseInactiva;
+            btnNoticias.className = claseInactiva;
+            btnInfo.className = claseInactiva;
 
             vistaRally.classList.add('hidden');
             vistaGeneral.classList.add('hidden');
+            vistaNoticias.classList.add('hidden');
             vistaInfo.classList.add('hidden');
 
             if (vista === 'rally') {
-                btnRally.className = 'active-tab px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
+                btnRally.className = claseActiva;
                 vistaRally.classList.remove('hidden');
                 contPlaca.classList.remove('hidden');
                 selectorCont.classList.remove('hidden');
             } else if (vista === 'general') {
-                btnGeneral.className = 'active-tab px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
+                btnGeneral.className = claseActiva;
                 vistaGeneral.classList.remove('hidden');
                 contPlaca.classList.add('hidden');
                 selectorCont.classList.add('hidden');
                 calcularClasificacionGeneral();
+            } else if (vista === 'noticias') {
+                btnNoticias.className = claseActiva;
+                vistaNoticias.classList.remove('hidden');
+                contPlaca.classList.add('hidden');
+                selectorCont.classList.add('hidden');
+                cargarNoticias();
             } else if (vista === 'info') {
-                btnInfo.className = 'active-tab px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
+                btnInfo.className = claseActiva;
                 vistaInfo.classList.remove('hidden');
                 contPlaca.classList.add('hidden');
                 selectorCont.classList.add('hidden');
+            }
+        }
+
+        async function cargarNoticias() {
+            const contenedor = document.getElementById('contenedor-noticias');
+            try {
+                const res = await fetch('noticias.json?v=' + new Date().getTime());
+                if (!res.ok) throw new Error('No noticias');
+                const noticias = await res.json();
+                
+                if (noticias.length === 0) {
+                    contenedor.innerHTML = '<p class="text-gray-400 p-4 text-center">No hay comunicados publicados.</p>';
+                    return;
+                }
+
+                // Las más recientes primero
+                const noticiasOrdenadas = [...noticias].reverse();
+
+                contenedor.innerHTML = noticiasOrdenadas.map(n => `
+                    <div class="bg-gray-900/80 border-l-4 ${n.color === 'yellow' ? 'border-yellow-500' : 'border-blue-500'} p-5 rounded-r-xl shadow-lg">
+                        <div class="flex flex-wrap justify-between items-center mb-2 gap-2">
+                            <span class="text-xs font-bold px-2.5 py-0.5 rounded ${n.color === 'yellow' ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'} uppercase">
+                                ${n.categoria || 'ANUNCIO'}
+                            </span>
+                            <span class="text-xs text-gray-400 font-mono">📅 ${n.fecha}</span>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold text-white mb-2">${n.titulo}</h3>
+                        <p class="text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-line">${n.contenido}</p>
+                    </div>
+                `).join('');
+
+            } catch (e) {
+                contenedor.innerHTML = '<p class="text-gray-400 p-4 text-center">No hay avisos publicados en este momento.</p>';
             }
         }
 
@@ -338,7 +391,6 @@
             const contPlaca = document.getElementById('contenedor-placa');
             const btnLink = document.getElementById('btn-link-rally');
 
-            // Actualización de la placa
             if (rallyInfo && rallyInfo.placa && rallyInfo.placa.trim() !== '') {
                 imgPlaca.src = rallyInfo.placa;
                 contPlaca.classList.remove('hidden');
@@ -347,7 +399,6 @@
                 contPlaca.classList.add('hidden');
             }
 
-            // Actualización del botón de enlace al Rally
             if (rallyInfo && rallyInfo.link && rallyInfo.link.trim() !== '') {
                 btnLink.href = rallyInfo.link;
                 btnLink.classList.remove('hidden');
@@ -380,12 +431,10 @@
             const lineas = textoCsv.split('\n').filter(l => l.trim() !== '');
             const lista = [];
 
-            // Empezamos en i = 1 para saltarnos la fila de nombres de columna (#;userid;user_name...)
             for (let i = 1; i < lineas.length; i++) {
                 const cols = lineas[i].split(';').map(c => c.replace(/"/g, '').trim());
                 if (cols.length < 7) continue;
 
-                // cols[2] = user_name, cols[3] = real_name, cols[5] = car, cols[6] = time3
                 const piloto = cols[2] || cols[3];
                 const coche = cols[5];
                 const tiempo = cols[6];
@@ -522,7 +571,7 @@
                 tbodyGen.innerHTML += row;
             });
         }
-        // Contador de visitas automático sin imágenes externas
+
         fetch('https://api.counterapi.dev/v1/championship-old-rally-src/visitas/up')
             .then(res => res.json())
             .then(data => {
