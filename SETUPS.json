@@ -23,5 +23,20 @@
     "coche": "Ford Fiesta Rally 2",
     "tipo": "Asfalto Bacheado",
     "archivo": "SETUPS/ASFALTO_BACHEADO_1.lsp"
-  }
+  },
+  {
+    "coche": "Ford Fiesta R2",
+    "tipo": "Asfalto Liso",
+    "archivo": "SETUPS/ASFALTO_LISO_FR2.lsp"
+  },
+  {
+    "coche": "Ford Fiesta R2",
+    "tipo": "Asfalto Bacheado",
+    "archivo": "SETUPS/ASFALTO_BACHEADO_FR2.lsp"
+  },
+  {
+    "coche": "Ford Fiesta R2",
+    "tipo": "Tierra",
+    "archivo": "SETUPS/TIERRA_FR2.lsp"
+  },
 ]
