@@ -43,16 +43,16 @@
             </a>
         </div>
 
-        <!-- BLOQUE 1: Menú Superior de Información y Otras Opciones del Campeonato -->
-        <div class="mb-6 bg-gray-800/50 p-4 rounded-xl border border-gray-700/50 shadow-md">
+        <!-- Botones de Pestañas Principales y Selector de Rally -->
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 bg-gray-800/50 p-4 rounded-xl border border-gray-700/50">
             <div class="flex flex-wrap gap-2 sm:gap-3">
-                <button id="btn-info" onclick="cambiarPestana('info')" 
-                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
-                    Información
+                <button id="btn-rally" onclick="cambiarPestana('rally')" 
+                    class="active-tab px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                    Rally
                 </button>
-                <button id="btn-noticias" onclick="cambiarPestana('noticias')" 
+                <button id="btn-general" onclick="cambiarPestana('general')" 
                     class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
-                    Noticias
+                    Clasificación General
                 </button>
                 <button id="btn-setups" onclick="cambiarPestana('setups')" 
                     class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
@@ -62,23 +62,13 @@
                     class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
                     Notas
                 </button>
-                <button id="btn-trofeos" onclick="cambiarPestana('trofeos')" 
+                <button id="btn-noticias" onclick="cambiarPestana('noticias')" 
                     class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
-                    Sala de trofeos
+                    Noticias
                 </button>
-            </div>
-        </div>
-
-        <!-- BLOQUE 2: Menú de Resultados y Selector de Rally (Manteniendo tu estructura exacta) -->
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 bg-gray-800/50 p-4 rounded-xl border border-gray-700/50 shadow-md">
-            <div class="flex flex-wrap gap-2 sm:gap-3">
-                <button id="btn-rally" onclick="cambiarPestana('rally')" 
-                    class="active-tab px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
-                    Rally
-                </button>
-                <button id="btn-general" onclick="cambiarPestana('general')" 
+                <button id="btn-info" onclick="cambiarPestana('info')" 
                     class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
-                    Clasificación General
+                    Información
                 </button>
             </div>
 
@@ -175,6 +165,26 @@
             </div>
         </div>
 
+        <!-- SECCIÓN: SETUPS -->
+        <div id="vista-setups" class="bg-gray-800 rounded-xl p-4 md:p-6 shadow-2xl border border-gray-700 hidden">
+            <h2 class="text-xl font-bold text-yellow-400 flex items-center gap-2 mb-6 border-b border-gray-700 pb-3">
+                <span>⚙️</span> Descarga de Setups
+            </h2>
+            <div id="lista-setups">
+                <p class="text-gray-400 p-4 text-center">Cargando setups...</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN: NOTAS -->
+        <div id="vista-notas" class="bg-gray-800 rounded-xl p-4 md:p-6 shadow-2xl border border-gray-700 hidden">
+            <h2 class="text-xl font-bold text-yellow-400 flex items-center gap-2 mb-6 border-b border-gray-700 pb-3">
+                <span>📝</span> Descarga de Pacenotes / Notas
+            </h2>
+            <div id="lista-notas">
+                <p class="text-gray-400 p-4 text-center">Cargando notas...</p>
+            </div>
+        </div>
+
         <!-- SECCIÓN: NOTICIAS / COMUNICADOS -->
         <div id="vista-noticias" class="bg-gray-800 rounded-xl p-4 md:p-6 shadow-2xl border border-gray-700 hidden">
             <h2 class="text-xl font-bold text-yellow-400 flex items-center gap-2 mb-6 border-b border-gray-700 pb-3">
@@ -251,25 +261,6 @@
                 </p>
             </div>
         </div>
-
-        <!-- SECCIÓN: SETUPS (Próximamente) -->
-        <div id="vista-setups" class="bg-gray-800 rounded-xl p-6 md:p-8 shadow-2xl border border-gray-700 hidden text-center">
-            <h2 class="text-xl font-bold text-yellow-400 mb-4">⚙️ Setups</h2>
-            <p class="text-gray-400">Sección en construcción.</p>
-        </div>
-
-        <!-- SECCIÓN: NOTAS (Próximamente) -->
-        <div id="vista-notas" class="bg-gray-800 rounded-xl p-6 md:p-8 shadow-2xl border border-gray-700 hidden text-center">
-            <h2 class="text-xl font-bold text-yellow-400 mb-4">📝 Notas</h2>
-            <p class="text-gray-400">Sección en construcción.</p>
-        </div>
-
-        <!-- SECCIÓN: SALA DE TROFEOS (Próximamente) -->
-        <div id="vista-trofeos" class="bg-gray-800 rounded-xl p-6 md:p-8 shadow-2xl border border-gray-700 hidden text-center">
-            <h2 class="text-xl font-bold text-yellow-400 mb-4">🏆 Sala de Trofeos</h2>
-            <p class="text-gray-400">Sección en construcción.</p>
-        </div>
-
     </div>
 
     <!-- FOOTER CON CONTADOR DE VISITAS -->
@@ -295,49 +286,156 @@
         const puntosPowerStageEscala = [8, 7, 6, 5, 4, 3, 2, 1];
 
         function cambiarPestana(vista) {
-            const btns = ['btn-rally', 'btn-general', 'btn-info', 'btn-noticias', 'btn-setups', 'btn-notas', 'btn-trofeos'];
-            const vistas = ['vista-rally', 'vista-general', 'vista-info', 'vista-noticias', 'vista-setups', 'vista-notas', 'vista-trofeos'];
-
+            const btnRally = document.getElementById('btn-rally');
+            const btnGeneral = document.getElementById('btn-general');
+            const btnSetups = document.getElementById('btn-setups');
+            const btnNotas = document.getElementById('btn-notas');
+            const btnNoticias = document.getElementById('btn-noticias');
+            const btnInfo = document.getElementById('btn-info');
+            
+            const vistaRally = document.getElementById('vista-rally');
+            const vistaGeneral = document.getElementById('vista-general');
+            const vistaSetups = document.getElementById('vista-setups');
+            const vistaNotas = document.getElementById('vista-notas');
+            const vistaNoticias = document.getElementById('vista-noticias');
+            const vistaInfo = document.getElementById('vista-info');
+            
             const contPlaca = document.getElementById('contenedor-placa');
             const selectorCont = document.getElementById('select-rally-container');
 
             const claseInactiva = 'bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
             const claseActiva = 'active-tab px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
 
-            // Desactivar todos los botones
-            btns.forEach(b => {
-                const el = document.getElementById(b);
-                if (el) el.className = claseInactiva;
-            });
+            btnRally.className = claseInactiva;
+            btnGeneral.className = claseInactiva;
+            if (btnSetups) btnSetups.className = claseInactiva;
+            if (btnNotas) btnNotas.className = claseInactiva;
+            btnNoticias.className = claseInactiva;
+            btnInfo.className = claseInactiva;
 
-            // Ocultar todas las secciones
-            vistas.forEach(v => {
-                const el = document.getElementById(v);
-                if (el) el.classList.add('hidden');
-            });
+            vistaRally.classList.add('hidden');
+            vistaGeneral.classList.add('hidden');
+            if (vistaSetups) vistaSetups.classList.add('hidden');
+            if (vistaNotas) vistaNotas.classList.add('hidden');
+            vistaNoticias.classList.add('hidden');
+            vistaInfo.classList.add('hidden');
 
-            // Activar botón y mostrar vista correspondientes
-            const btnActivo = document.getElementById('btn-' + vista);
-            const vistaActiva = document.getElementById('vista-' + vista);
-
-            if (btnActivo) btnActivo.className = claseActiva;
-            if (vistaActiva) vistaActiva.classList.remove('hidden');
-
-            // Visibilidad de la placa y selector de rally (solo visibles en la vista 'rally')
             if (vista === 'rally') {
+                btnRally.className = claseActiva;
+                vistaRally.classList.remove('hidden');
                 contPlaca.classList.remove('hidden');
                 selectorCont.classList.remove('hidden');
-            } else {
+            } else if (vista === 'general') {
+                btnGeneral.className = claseActiva;
+                vistaGeneral.classList.remove('hidden');
+                contPlaca.classList.add('hidden');
+                selectorCont.classList.add('hidden');
+                calcularClasificacionGeneral();
+            } else if (vista === 'setups') {
+                if (btnSetups) btnSetups.className = claseActiva;
+                if (vistaSetups) vistaSetups.classList.remove('hidden');
+                contPlaca.classList.add('hidden');
+                selectorCont.classList.add('hidden');
+                cargarSetups();
+            } else if (vista === 'notas') {
+                if (btnNotas) btnNotas.className = claseActiva;
+                if (vistaNotas) vistaNotas.classList.remove('hidden');
+                contPlaca.classList.add('hidden');
+                selectorCont.classList.add('hidden');
+                cargarNotas();
+            } else if (vista === 'noticias') {
+                btnNoticias.className = claseActiva;
+                vistaNoticias.classList.remove('hidden');
+                contPlaca.classList.add('hidden');
+                selectorCont.classList.add('hidden');
+                cargarNoticias();
+            } else if (vista === 'info') {
+                btnInfo.className = claseActiva;
+                vistaInfo.classList.remove('hidden');
                 contPlaca.classList.add('hidden');
                 selectorCont.classList.add('hidden');
             }
+        }
 
-            // Carga diferida según la sección
-            if (vista === 'general') {
-                calcularClasificacionGeneral();
-            } else if (vista === 'noticias') {
-                cargarNoticias();
-            }
+        function cargarSetups() {
+            fetch('SETUPS.json?v=' + new Date().getTime())
+                .then(response => {
+                    if (!response.ok) throw new Error('Error HTTP ' + response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    const contenedorSetups = document.getElementById('lista-setups');
+                    if (!contenedorSetups) return;
+
+                    if (!data || data.length === 0) {
+                        contenedorSetups.innerHTML = '<p class="text-gray-500 italic text-center p-4">No hay setups disponibles.</p>';
+                        return;
+                    }
+
+                    let html = '<ul class="space-y-3">';
+                    data.forEach(item => {
+                        html += `
+                            <li class="flex justify-between items-center bg-gray-900/80 p-4 rounded-xl border border-gray-700 shadow-md">
+                                <div>
+                                    <strong class="text-yellow-400 text-base md:text-lg block">${item.coche}</strong> 
+                                    <span class="text-gray-400 text-sm">Especialidad / Tipo: ${item.tipo}</span>
+                                </div>
+                                <a href="${encodeURI(item.archivo)}" download class="bg-yellow-500 hover:bg-yellow-400 text-black font-extrabold px-4 py-2 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all shadow">
+                                    Descargar Setup
+                                </a>
+                            </li>
+                        `;
+                    });
+                    html += '</ul>';
+                    contenedorSetups.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error("Error cargando SETUPS:", error);
+                    const contenedorSetups = document.getElementById('lista-setups');
+                    if (contenedorSetups) {
+                        contenedorSetups.innerHTML = '<p class="text-gray-400 italic text-center p-4">No se pudo cargar SETUPS.json o aún no hay setups disponibles.</p>';
+                    }
+                });
+        }
+
+        function cargarNotas() {
+            fetch('NOTAS.json?v=' + new Date().getTime())
+                .then(response => {
+                    if (!response.ok) throw new Error('Error HTTP ' + response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    const contenedorNotas = document.getElementById('lista-notas');
+                    if (!contenedorNotas) return;
+
+                    if (!data || data.length === 0) {
+                        contenedorNotas.innerHTML = '<p class="text-gray-500 italic text-center p-4">No hay notas disponibles.</p>';
+                        return;
+                    }
+
+                    let html = '<ul class="space-y-3">';
+                    data.forEach(item => {
+                        html += `
+                            <li class="flex justify-between items-center bg-gray-900/80 p-4 rounded-xl border border-gray-700 shadow-md">
+                                <div>
+                                    <strong class="text-yellow-400 text-base md:text-lg block">Tramo: ${item.tramo}</strong>
+                                </div>
+                                <a href="${encodeURI(item.archivo)}" download class="bg-yellow-500 hover:bg-yellow-400 text-black font-extrabold px-4 py-2 rounded-lg text-xs md:text-sm uppercase tracking-wider transition-all shadow">
+                                    Descargar Nota
+                                </a>
+                            </li>
+                        `;
+                    });
+                    html += '</ul>';
+                    contenedorNotas.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error("Error cargando NOTAS:", error);
+                    const contenedorNotas = document.getElementById('lista-notas');
+                    if (contenedorNotas) {
+                        contenedorNotas.innerHTML = '<p class="text-gray-400 italic text-center p-4">No se pudo cargar NOTAS.json o aún no hay notas disponibles.</p>';
+                    }
+                });
         }
 
         async function cargarNoticias() {
@@ -446,10 +544,8 @@
             const tbodyRally = document.getElementById('tabla-rally-body');
             tbodyRally.innerHTML = '<tr><td colspan="6" class="text-center py-8 text-gray-400">Cargando CSV de tiempos...</td></tr>';
 
-            // Resetear puntos Power Stage del rally cargado
             mapaPowerStageActual = {};
 
-            // Intentar cargar la Power Stage si existe
             try {
                 const resPs = await fetch(`powerstage_${numOrden}.csv`);
                 if (resPs.ok) {
@@ -460,7 +556,6 @@
                 mapaPowerStageActual = {};
             }
 
-            // Cargar el CSV del Rally principal
             try {
                 const resCsv = await fetch(`rally_${numOrden}.csv`);
                 if (!resCsv.ok) throw new Error("Archivo CSV no encontrado");
@@ -673,75 +768,6 @@
         } catch (e) {
             document.getElementById('numero-visitas').textContent = '100+';
         }
-            
-  // Cargar lista de NOTAS
-  fetch('NOTAS.json?v=' + new Date().getTime())
-    .then(response => response.json())
-    .then(data => {
-      const contenedorNotas = document.getElementById('lista-notas');
-      if (!contenedorNotas) return;
-
-      if (!data || data.length === 0) {
-        contenedorNotas.innerHTML = '<p class="text-gray-500 italic">No hay notas disponibles.</p>';
-        return;
-      }
-
-      let html = '<ul class="space-y-2">';
-      data.forEach(item => {
-        html += `
-          <li class="flex justify-between items-center bg-gray-800 p-2.5 rounded border border-gray-700">
-            <div><strong class="text-yellow-400">Tramo:</strong> ${item.tramo}</div>
-            <a href="${item.archivo}" download class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-3 py-1 rounded text-xs transition-all">Descargar Nota</a>
-          </li>
-        `;
-      });
-      html += '</ul>';
-      contenedorNotas.innerHTML = html;
-    })
-    .catch(error => {
-      const contenedorNotas = document.getElementById('lista-notas');
-      if (contenedorNotas) {
-        contenedorNotas.innerHTML = '<p class="text-gray-500 italic">No se pudo cargar NOTAS.json</p>';
-      }
-    });
-
-  // Cargar lista de SETUPS
-  fetch('SETUPS.json?v=' + new Date().getTime())
-    .then(response => {
-      if (!response.ok) throw new Error('Error HTTP ' + response.status);
-      return response.json();
-    })
-    .then(data => {
-      const contenedorSetups = document.getElementById('lista-setups');
-      if (!contenedorSetups) return;
-
-      if (!data || data.length === 0) {
-        contenedorSetups.innerHTML = '<p class="text-gray-500 italic">No hay setups disponibles.</p>';
-        return;
-      }
-
-      let html = '<ul class="space-y-2">';
-      data.forEach(item => {
-        html += `
-          <li class="flex justify-between items-center bg-gray-800 p-2.5 rounded border border-gray-700">
-            <div>
-              <strong class="text-yellow-400">${item.coche}</strong> 
-              <span class="text-gray-400">(${item.tipo})</span>
-            </div>
-            <a href="${encodeURI(item.archivo)}" download class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-3 py-1 rounded text-xs transition-all">Descargar Setup</a>
-          </li>
-        `;
-      });
-      html += '</ul>';
-      contenedorSetups.innerHTML = html;
-    })
-    .catch(error => {
-      console.error("Error cargando SETUPS:", error);
-      const contenedorSetups = document.getElementById('lista-setups');
-      if (contenedorSetups) {
-        contenedorSetups.innerHTML = '<p class="text-gray-500 italic">No se pudo cargar SETUPS.json</p>';
-      }
-    });
     </script>
 </body>
 </html>
