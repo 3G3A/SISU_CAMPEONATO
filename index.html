@@ -61,6 +61,10 @@
                 class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
                 Notas
             </button>
+            <button id="btn-trofeos" onclick="cambiarPestana('trofeos')" 
+                class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                Sala de trofeos
+            </button>
         </div>
 
         <!-- BLOQUE 2: Selección de Vista de Campeonatos / Selector de Rally -->
@@ -189,6 +193,16 @@
             </div>
         </div>
 
+        <!-- SECCIÓN: SALA DE TROFEOS -->
+        <div id="vista-trofeos" class="bg-gray-800 rounded-xl p-4 md:p-6 shadow-2xl border border-gray-700 hidden">
+            <h2 class="text-xl font-bold text-yellow-400 flex items-center gap-2 mb-6 border-b border-gray-700 pb-3">
+                <span>🏆</span> Sala de Trofeos / Salón de la Fama
+            </h2>
+            <div class="text-center py-8">
+                <p class="text-gray-400 italic">Sección en construcción. Mañana le daremos forma a la Sala de Trofeos.</p>
+            </div>
+        </div>
+
         <!-- SECCIÓN: NOTICIAS / COMUNICADOS -->
         <div id="vista-noticias" class="bg-gray-800 rounded-xl p-4 md:p-6 shadow-2xl border border-gray-700 hidden">
             <h2 class="text-xl font-bold text-yellow-400 flex items-center gap-2 mb-6 border-b border-gray-700 pb-3">
@@ -294,6 +308,7 @@
             const btnGeneral = document.getElementById('btn-general');
             const btnSetups = document.getElementById('btn-setups');
             const btnNotas = document.getElementById('btn-notas');
+            const btnTrofeos = document.getElementById('btn-trofeos');
             const btnNoticias = document.getElementById('btn-noticias');
             const btnInfo = document.getElementById('btn-info');
             
@@ -301,6 +316,7 @@
             const vistaGeneral = document.getElementById('vista-general');
             const vistaSetups = document.getElementById('vista-setups');
             const vistaNotas = document.getElementById('vista-notas');
+            const vistaTrofeos = document.getElementById('vista-trofeos');
             const vistaNoticias = document.getElementById('vista-noticias');
             const vistaInfo = document.getElementById('vista-info');
             
@@ -314,6 +330,7 @@
             btnGeneral.className = claseInactiva;
             if (btnSetups) btnSetups.className = claseInactiva;
             if (btnNotas) btnNotas.className = claseInactiva;
+            if (btnTrofeos) btnTrofeos.className = claseInactiva;
             btnNoticias.className = claseInactiva;
             btnInfo.className = claseInactiva;
 
@@ -321,6 +338,7 @@
             vistaGeneral.classList.add('hidden');
             if (vistaSetups) vistaSetups.classList.add('hidden');
             if (vistaNotas) vistaNotas.classList.add('hidden');
+            if (vistaTrofeos) vistaTrofeos.classList.add('hidden');
             vistaNoticias.classList.add('hidden');
             vistaInfo.classList.add('hidden');
 
@@ -347,6 +365,11 @@
                 contPlaca.classList.add('hidden');
                 selectorCont.classList.add('hidden');
                 cargarNotas();
+            } else if (vista === 'trofeos') {
+                if (btnTrofeos) btnTrofeos.className = claseActiva;
+                if (vistaTrofeos) vistaTrofeos.classList.remove('hidden');
+                contPlaca.classList.add('hidden');
+                selectorCont.classList.add('hidden');
             } else if (vista === 'noticias') {
                 btnNoticias.className = claseActiva;
                 vistaNoticias.classList.remove('hidden');
