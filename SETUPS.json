@@ -1,7 +1,7 @@
 [
   {
     "coche": "Ford Fiesta Rally 2",
-    "tipo": "Asfalto",
+    "tipo": "Asfalto Liso",
     "archivo": "SETUPS/fiesta_r2_tierra.lsp"
   }
 ]
