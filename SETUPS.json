@@ -5,3 +5,35 @@
     "archivo": "SETUPS/ASF_LISO_1.lsp"
   }
 ]
+
+[
+  {
+    "coche": "Ford Fiesta Rally 2",
+    "tipo": "Asfalto Liso 2.0",
+    "archivo": "SETUPS/ASF_LISO_2.lsp"
+  }
+]
+
+[
+  {
+    "coche": "Ford Fiesta Rally 2",
+    "tipo": "Grava Liso",
+    "archivo": "SETUPS/GRAVA_LISO_1.lsp"
+  }
+]
+
+[
+  {
+    "coche": "Ford Fiesta Rally 2",
+    "tipo": "Grava Bacheada",
+    "archivo": "SETUPS/GRAVA_BACHEADO_1.lsp"
+  }
+]
+
+[
+  {
+    "coche": "Ford Fiesta Rally 2",
+    "tipo": "Asfalto Bacheado",
+    "archivo": "SETUPS/ASFALTO_BACHEADO_1.lsp"
+  }
+]
