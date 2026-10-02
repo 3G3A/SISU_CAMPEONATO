@@ -188,7 +188,7 @@
                 <div class="mt-4 bg-gray-900/60 p-4 rounded-lg border border-gray-700/80">
                     <h3 class="font-bold text-white mb-2 text-sm md:text-base">Sistema de participación y puntuación por categorías:</h3>
                     <p class="text-sm text-gray-300 leading-relaxed">
-                        Los pilotos tienen total libertad para <strong>cambiar de categoría en cada prueba</strong>. La puntuación acumulada se reflejará tanto en la tabla General absoluta como en la tabla General de la división correspondiente a la categoría elegida en cada rally. La puntuación es: <strong>50, 45, 42, 40, 38, 36, 34, 32, 30, 28, 26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 1, y 1 pto desde esta posición en adelante.</strong> y existe el TC + (Power Stage) que otorga: <strong>8, 7, 6, 5, 4, 3, 2, 1</strong>. 
+                        Los pilotos tienen total libertad para <strong>cambiar de categoría en cada prueba</strong>. La puntuación acumulada se reflejará tanto en la tabla General absoluta como en la tabla General de la división correspondiente a la categoría elegida en cada rally.
                     </p>
                     <div class="mt-3 bg-gray-800/80 p-3 rounded border-l-4 border-yellow-500 text-xs md:text-sm italic text-gray-300">
                         <strong>Ejemplo práctico:</strong> Si el <em>Piloto 1</em> compite en un rally con un vehículo <strong>4WD</strong> y en la siguiente prueba con un <strong>RWD</strong>, sus puntos sumarán tanto para la <strong>GENERAL del campeonato</strong> (a lo largo de los 12 Rallies) como para las clasificaciones específicas de <strong>4WD</strong> y <strong>RWD</strong> en las pruebas disputadas con cada uno.
@@ -248,10 +248,14 @@
         let configGlobal = null;
         let mapaCochesGlobal = { "4WD": [], "FWD": [], "RWD": [] };
         let datosRallyProcesados = [];
+        let mapaPowerStageActual = {}; // { "NombrePiloto": puntosPowerStage }
         let historicoRallies = [];
         let catRallySeleccionada = 'TODAS';
         let catGeneralSeleccionada = 'TODAS';
+        
         const puntosEscala = [50, 45, 42, 40, 38, 36, 34, 32, 30, 28, 26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 1];
+        // Escala oficial Power Stage: 8 a 1 punto (8 primeros clasificados)
+        const puntosPowerStageEscala = [8, 7, 6, 5, 4, 3, 2, 1];
 
         function cambiarPestana(vista) {
             const btnRally = document.getElementById('btn-rally');
@@ -317,7 +321,6 @@
                     return;
                 }
 
-                // Las más recientes primero
                 const noticiasOrdenadas = [...noticias].reverse();
 
                 contenedor.innerHTML = noticiasOrdenadas.map(n => `
@@ -412,6 +415,21 @@
             const tbodyRally = document.getElementById('tabla-rally-body');
             tbodyRally.innerHTML = '<tr><td colspan="6" class="text-center py-8 text-gray-400">Cargando CSV de tiempos...</td></tr>';
 
+            // Resetear puntos Power Stage del rally cargado
+            mapaPowerStageActual = {};
+
+            // Intentar cargar la Power Stage si existe
+            try {
+                const resPs = await fetch(`powerstage_${numOrden}.csv`);
+                if (resPs.ok) {
+                    const textoPs = await resPs.text();
+                    mapaPowerStageActual = procesarTextoPowerStageCSV(textoPs);
+                }
+            } catch (e) {
+                mapaPowerStageActual = {};
+            }
+
+            // Cargar el CSV del Rally principal
             try {
                 const resCsv = await fetch(`rally_${numOrden}.csv`);
                 if (!resCsv.ok) throw new Error("Archivo CSV no encontrado");
@@ -451,6 +469,30 @@
             return lista;
         }
 
+        function procesarTextoPowerStageCSV(textoCsv) {
+            const lineas = textoCsv.split('\n').filter(l => l.trim() !== '');
+            const mapaPs = {};
+
+            let contadorPos = 0;
+            for (let i = 1; i < lineas.length; i++) {
+                const cols = lineas[i].split(';').map(c => c.replace(/"/g, '').trim());
+                if (cols.length < 7) continue;
+
+                const piloto = cols[2] || cols[3];
+                const tiempo = cols[6];
+
+                if (!piloto || !tiempo || tiempo === '00:00.000') continue;
+
+                if (contadorPos < puntosPowerStageEscala.length) {
+                    mapaPs[piloto] = puntosPowerStageEscala[contadorPos];
+                    contadorPos++;
+                } else {
+                    break;
+                }
+            }
+            return mapaPs;
+        }
+
         function filtrarCategoriaRally(cat) {
             catRallySeleccionada = cat;
 
@@ -479,7 +521,11 @@
 
             listaFiltrada.forEach((p, index) => {
                 const pos = index + 1;
-                const pts = index < puntosEscala.length ? puntosEscala[index] : 1;
+                const ptsBase = index < puntosEscala.length ? puntosEscala[index] : 1;
+                const ptsPs = mapaPowerStageActual[p.piloto] || 0;
+                const ptsTotalesRally = ptsBase + ptsPs;
+
+                const tagPs = ptsPs > 0 ? `<span class="text-emerald-400 text-xs font-extrabold ml-1.5">(+${ptsPs})</span>` : '';
 
                 const row = `
                     <tr class="hover:bg-gray-750 transition-colors border-b border-gray-700/30">
@@ -488,7 +534,7 @@
                         <td class="py-3 px-4 text-sm text-gray-400">${p.coche}</td>
                         <td class="py-3 px-4 text-center text-xs"><span class="bg-gray-700 text-gray-300 px-2 py-0.5 rounded">${p.categoria}</span></td>
                         <td class="py-3 px-4 text-right font-mono text-gray-300">${p.tiempo}</td>
-                        <td class="py-3 px-4 text-center font-bold text-yellow-400">${pts}</td>
+                        <td class="py-3 px-4 text-center font-bold text-yellow-400">${ptsTotalesRally} ${tagPs}</td>
                     </tr>
                 `;
                 tbodyRally.innerHTML += row;
@@ -502,12 +548,21 @@
             for (let idx = 0; idx < configGlobal.rallys.length; idx++) {
                 const numR = idx + 1;
                 try {
+                    let mapaPs = {};
+                    try {
+                        const resPs = await fetch(`powerstage_${numR}.csv`);
+                        if (resPs.ok) {
+                            const txtPs = await resPs.text();
+                            mapaPs = procesarTextoPowerStageCSV(txtPs);
+                        }
+                    } catch (e) {}
+
                     const res = await fetch(`rally_${numR}.csv`);
                     if (res.ok) {
                         const txt = await res.text();
                         const datos = procesarTextoCSV(txt);
                         if (datos.length > 0) {
-                            historicoRallies.push(datos);
+                            historicoRallies.push({ datos, mapaPs });
                         }
                     }
                 } catch (e) {}
@@ -533,18 +588,24 @@
         function calcularClasificacionGeneral() {
             const acumulado = {};
 
-            historicoRallies.forEach(rally => {
+            historicoRallies.forEach(item => {
+                const rally = item.datos;
+                const mapaPs = item.mapaPs;
+
                 let lista = rally;
                 if (catGeneralSeleccionada !== 'TODAS') {
                     lista = rally.filter(p => p.categoria === catGeneralSeleccionada);
                 }
 
                 lista.forEach((p, index) => {
-                    const pts = index < puntosEscala.length ? puntosEscala[index] : 1;
+                    const ptsBase = index < puntosEscala.length ? puntosEscala[index] : 1;
+                    const ptsPs = mapaPs[p.piloto] || 0;
+                    const ptsTotales = ptsBase + ptsPs;
+
                     if (!acumulado[p.piloto]) {
                         acumulado[p.piloto] = { piloto: p.piloto, puntos: 0, rallies: 0 };
                     }
-                    acumulado[p.piloto].puntos += pts;
+                    acumulado[p.piloto].puntos += ptsTotales;
                     acumulado[p.piloto].rallies += 1;
                 });
             });
@@ -572,15 +633,15 @@
             });
         }
 
-// CONTADOR LOCAL
-try {
-    let visitas = localStorage.getItem('visitas_rally_src') || 100;
-    visitas = parseInt(visitas) + 1;
-    localStorage.setItem('visitas_rally_src', visitas);
-    document.getElementById('numero-visitas').textContent = visitas;
-} catch (e) {
-    document.getElementById('numero-visitas').textContent = '100+';
-}
+        // CONTADOR LOCAL
+        try {
+            let visitas = localStorage.getItem('visitas_rally_src') || 100;
+            visitas = parseInt(visitas) + 1;
+            localStorage.setItem('visitas_rally_src', visitas);
+            document.getElementById('numero-visitas').textContent = visitas;
+        } catch (e) {
+            document.getElementById('numero-visitas').textContent = '100+';
+        }
     </script>
 </body>
 </html>
