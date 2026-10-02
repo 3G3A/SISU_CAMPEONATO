@@ -673,6 +673,70 @@
         } catch (e) {
             document.getElementById('numero-visitas').textContent = '100+';
         }
+        <script>
+            
+  // Cargar lista de NOTAS
+  fetch('NOTAS.json?v=' + new Date().getTime())
+    .then(response => response.json())
+    .then(data => {
+      const contenedorNotas = document.getElementById('lista-notas');
+      if (!contenedorNotas) return;
+
+      if (!data || data.length === 0) {
+        contenedorNotas.innerHTML = '<p class="text-gray-500 italic">No hay notas disponibles.</p>';
+        return;
+      }
+
+      let html = '<ul class="space-y-2">';
+      data.forEach(item => {
+        html += `
+          <li class="flex justify-between items-center bg-gray-800 p-2.5 rounded border border-gray-700">
+            <div><strong class="text-yellow-400">Tramo:</strong> ${item.tramo}</div>
+            <a href="${item.archivo}" download class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-3 py-1 rounded text-xs transition-all">Descargar Nota</a>
+          </li>
+        `;
+      });
+      html += '</ul>';
+      contenedorNotas.innerHTML = html;
+    })
+    .catch(error => {
+      const contenedorNotas = document.getElementById('lista-notas');
+      if (contenedorNotas) {
+        contenedorNotas.innerHTML = '<p class="text-gray-500 italic">No se pudo cargar NOTAS.json</p>';
+      }
+    });
+
+  // Cargar lista de SETUPS
+  fetch('SETUPS.json?v=' + new Date().getTime())
+    .then(response => response.json())
+    .then(data => {
+      const contenedorSetups = document.getElementById('lista-setups');
+      if (!contenedorSetups) return;
+
+      if (!data || data.length === 0) {
+        contenedorSetups.innerHTML = '<p class="text-gray-500 italic">No hay setups disponibles.</p>';
+        return;
+      }
+
+      let html = '<ul class="space-y-2">';
+      data.forEach(item => {
+        html += `
+          <li class="flex justify-between items-center bg-gray-800 p-2.5 rounded border border-gray-700">
+            <div><strong class="text-yellow-400">${item.coche}</strong> <span class="text-gray-400">(${item.tipo})</span></div>
+            <a href="${item.archivo}" download class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-3 py-1 rounded text-xs transition-all">Descargar Setup</a>
+          </li>
+        `;
+      });
+      html += '</ul>';
+      contenedorSetups.innerHTML = html;
+    })
+    .catch(error => {
+      const contenedorSetups = document.getElementById('lista-setups');
+      if (contenedorSetups) {
+        contenedorSetups.innerHTML = '<p class="text-gray-500 italic">No se pudo cargar SETUPS.json</p>';
+      }
+    });
+</script>
     </script>
 </body>
 </html>
