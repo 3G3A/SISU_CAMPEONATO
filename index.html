@@ -43,8 +43,34 @@
             </a>
         </div>
 
-        <!-- Botones de Pestañas Principales y Selector de Rally -->
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 bg-gray-800/50 p-4 rounded-xl border border-gray-700/50">
+        <!-- BLOQUE 1: Menú Superior de Información y Otras Opciones del Campeonato -->
+        <div class="mb-6 bg-gray-800/50 p-4 rounded-xl border border-gray-700/50 shadow-md">
+            <div class="flex flex-wrap gap-2 sm:gap-3">
+                <button id="btn-info" onclick="cambiarPestana('info')" 
+                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                    Información
+                </button>
+                <button id="btn-noticias" onclick="cambiarPestana('noticias')" 
+                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                    Noticias
+                </button>
+                <button id="btn-setups" onclick="cambiarPestana('setups')" 
+                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                    Setups
+                </button>
+                <button id="btn-notas" onclick="cambiarPestana('notas')" 
+                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                    Notas
+                </button>
+                <button id="btn-trofeos" onclick="cambiarPestana('trofeos')" 
+                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                    Sala de trofeos
+                </button>
+            </div>
+        </div>
+
+        <!-- BLOQUE 2: Menú de Resultados y Selector de Rally (Manteniendo tu estructura exacta) -->
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 bg-gray-800/50 p-4 rounded-xl border border-gray-700/50 shadow-md">
             <div class="flex flex-wrap gap-2 sm:gap-3">
                 <button id="btn-rally" onclick="cambiarPestana('rally')" 
                     class="active-tab px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
@@ -53,14 +79,6 @@
                 <button id="btn-general" onclick="cambiarPestana('general')" 
                     class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
                     Clasificación General
-                </button>
-                <button id="btn-noticias" onclick="cambiarPestana('noticias')" 
-                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
-                    Noticias
-                </button>
-                <button id="btn-info" onclick="cambiarPestana('info')" 
-                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
-                    Información
                 </button>
             </div>
 
@@ -233,6 +251,25 @@
                 </p>
             </div>
         </div>
+
+        <!-- SECCIÓN: SETUPS (Próximamente) -->
+        <div id="vista-setups" class="bg-gray-800 rounded-xl p-6 md:p-8 shadow-2xl border border-gray-700 hidden text-center">
+            <h2 class="text-xl font-bold text-yellow-400 mb-4">⚙️ Setups</h2>
+            <p class="text-gray-400">Sección en construcción.</p>
+        </div>
+
+        <!-- SECCIÓN: NOTAS (Próximamente) -->
+        <div id="vista-notas" class="bg-gray-800 rounded-xl p-6 md:p-8 shadow-2xl border border-gray-700 hidden text-center">
+            <h2 class="text-xl font-bold text-yellow-400 mb-4">📝 Notas</h2>
+            <p class="text-gray-400">Sección en construcción.</p>
+        </div>
+
+        <!-- SECCIÓN: SALA DE TROFEOS (Próximamente) -->
+        <div id="vista-trofeos" class="bg-gray-800 rounded-xl p-6 md:p-8 shadow-2xl border border-gray-700 hidden text-center">
+            <h2 class="text-xl font-bold text-yellow-400 mb-4">🏆 Sala de Trofeos</h2>
+            <p class="text-gray-400">Sección en construcción.</p>
+        </div>
+
     </div>
 
     <!-- FOOTER CON CONTADOR DE VISITAS -->
@@ -258,54 +295,48 @@
         const puntosPowerStageEscala = [8, 7, 6, 5, 4, 3, 2, 1];
 
         function cambiarPestana(vista) {
-            const btnRally = document.getElementById('btn-rally');
-            const btnGeneral = document.getElementById('btn-general');
-            const btnNoticias = document.getElementById('btn-noticias');
-            const btnInfo = document.getElementById('btn-info');
-            
-            const vistaRally = document.getElementById('vista-rally');
-            const vistaGeneral = document.getElementById('vista-general');
-            const vistaNoticias = document.getElementById('vista-noticias');
-            const vistaInfo = document.getElementById('vista-info');
-            
+            const btns = ['btn-rally', 'btn-general', 'btn-info', 'btn-noticias', 'btn-setups', 'btn-notas', 'btn-trofeos'];
+            const vistas = ['vista-rally', 'vista-general', 'vista-info', 'vista-noticias', 'vista-setups', 'vista-notas', 'vista-trofeos'];
+
             const contPlaca = document.getElementById('contenedor-placa');
             const selectorCont = document.getElementById('select-rally-container');
 
             const claseInactiva = 'bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
             const claseActiva = 'active-tab px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base';
 
-            btnRally.className = claseInactiva;
-            btnGeneral.className = claseInactiva;
-            btnNoticias.className = claseInactiva;
-            btnInfo.className = claseInactiva;
+            // Desactivar todos los botones
+            btns.forEach(b => {
+                const el = document.getElementById(b);
+                if (el) el.className = claseInactiva;
+            });
 
-            vistaRally.classList.add('hidden');
-            vistaGeneral.classList.add('hidden');
-            vistaNoticias.classList.add('hidden');
-            vistaInfo.classList.add('hidden');
+            // Ocultar todas las secciones
+            vistas.forEach(v => {
+                const el = document.getElementById(v);
+                if (el) el.classList.add('hidden');
+            });
 
+            // Activar botón y mostrar vista correspondientes
+            const btnActivo = document.getElementById('btn-' + vista);
+            const vistaActiva = document.getElementById('vista-' + vista);
+
+            if (btnActivo) btnActivo.className = claseActiva;
+            if (vistaActiva) vistaActiva.classList.remove('hidden');
+
+            // Visibilidad de la placa y selector de rally (solo visibles en la vista 'rally')
             if (vista === 'rally') {
-                btnRally.className = claseActiva;
-                vistaRally.classList.remove('hidden');
                 contPlaca.classList.remove('hidden');
                 selectorCont.classList.remove('hidden');
-            } else if (vista === 'general') {
-                btnGeneral.className = claseActiva;
-                vistaGeneral.classList.remove('hidden');
+            } else {
                 contPlaca.classList.add('hidden');
                 selectorCont.classList.add('hidden');
+            }
+
+            // Carga diferida según la sección
+            if (vista === 'general') {
                 calcularClasificacionGeneral();
             } else if (vista === 'noticias') {
-                btnNoticias.className = claseActiva;
-                vistaNoticias.classList.remove('hidden');
-                contPlaca.classList.add('hidden');
-                selectorCont.classList.add('hidden');
                 cargarNoticias();
-            } else if (vista === 'info') {
-                btnInfo.className = claseActiva;
-                vistaInfo.classList.remove('hidden');
-                contPlaca.classList.add('hidden');
-                selectorCont.classList.add('hidden');
             }
         }
 
