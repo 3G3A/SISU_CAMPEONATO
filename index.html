@@ -43,7 +43,27 @@
             </a>
         </div>
 
-        <!-- Botones de Pestañas Principales y Selector de Rally -->
+        <!-- BLOQUE 1: Navegación Global / Secciones de la Web -->
+        <div class="mb-4 bg-gray-800/50 p-4 rounded-xl border border-gray-700/50 flex flex-wrap justify-center sm:justify-start items-center gap-2 sm:gap-3">
+            <button id="btn-info" onclick="cambiarPestana('info')" 
+                class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                Información
+            </button>
+            <button id="btn-noticias" onclick="cambiarPestana('noticias')" 
+                class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                Noticias
+            </button>
+            <button id="btn-setups" onclick="cambiarPestana('setups')" 
+                class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                Setups
+            </button>
+            <button id="btn-notas" onclick="cambiarPestana('notas')" 
+                class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
+                Notas
+            </button>
+        </div>
+
+        <!-- BLOQUE 2: Selección de Vista de Campeonatos / Selector de Rally -->
         <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 bg-gray-800/50 p-4 rounded-xl border border-gray-700/50">
             <div class="flex flex-wrap gap-2 sm:gap-3">
                 <button id="btn-rally" onclick="cambiarPestana('rally')" 
@@ -53,22 +73,6 @@
                 <button id="btn-general" onclick="cambiarPestana('general')" 
                     class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
                     Clasificación General
-                </button>
-                <button id="btn-setups" onclick="cambiarPestana('setups')" 
-                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
-                    Setups
-                </button>
-                <button id="btn-notas" onclick="cambiarPestana('notas')" 
-                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
-                    Notas
-                </button>
-                <button id="btn-noticias" onclick="cambiarPestana('noticias')" 
-                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
-                    Noticias
-                </button>
-                <button id="btn-info" onclick="cambiarPestana('info')" 
-                    class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-5 py-2.5 rounded-lg font-bold transition-all shadow-md text-sm md:text-base">
-                    Información
                 </button>
             </div>
 
