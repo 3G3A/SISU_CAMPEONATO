@@ -4,43 +4,43 @@
     "categoria": "GENERAL",
     "imagen": "TROFEOS/trofeo_sisu_1.png",
     "piloto": "Piloto",
-    "puntos": 000,
-    "primeros": 0,
-    "segundos": 0,
-    "terceros": 0,
-    "scratches": 0
+    "puntos": 1,
+    "primeros": 1,
+    "segundos": 1,
+    "terceros": 1,
+    "scratches": 1
   },
   {
     "campeonato": "I SISU CAMPEONATO 2026",
     "categoria": "4WD",
     "imagen": "TROFEOS/trofeo_sisu_2.png",
     "piloto": "Piloto 2",
-    "puntos": 080,
-    "primeros": 0,
-    "segundos": 0,
-    "terceros": 0,
-    "scratches": 0
+    "puntos": 80,
+    "primeros": 20,
+    "segundos": 20,
+    "terceros": 20,
+    "scratches": 20
   },
 {
     "campeonato": "I SISU CAMPEONATO 2026",
     "categoria": "FWD",
     "imagen": "TROFEOS/trofeo_sisu_2.png",
     "piloto": "Piloto 3",
-    "puntos": 080,
-    "primeros": 0,
-    "segundos": 0,
-    "terceros": 0,
-    "scratches": 0
+    "puntos": 380,
+    "primeros": 30,
+    "segundos": 30,
+    "terceros": 30,
+    "scratches": 30
   },
 {
     "campeonato": "I SISU CAMPEONATO 2026",
     "categoria": "RWD",
     "imagen": "TROFEOS/trofeo_sisu_2.png",
     "piloto": "Piloto 4",
-    "puntos": 080,
-    "primeros": 0,
-    "segundos": 0,
-    "terceros": 0,
-    "scratches": 0
+    "puntos": 480,
+    "primeros": 4,
+    "segundos": 4,
+    "terceros": 4,
+    "scratches": 4
   }
 ]
