@@ -2,7 +2,7 @@
   {
     "campeonato": "I SISU CAMPEONATO 2026",
     "categoria": "GENERAL",
-    "imagen": "TROFEOS/REPSOL RALLY.png",
+    "imagen": "TROFEOS/TROFEO PRUEBA.png",
     "piloto": "Piloto",
     "puntos": 1,
     "primeros": 1,
@@ -13,7 +13,7 @@
   {
     "campeonato": "I SISU CAMPEONATO 2026",
     "categoria": "4WD",
-    "imagen": "TROFEOS/REPSOL RALLY.png",
+    "imagen": "TROFEOS/TROFEO PRUEBA.png",
     "piloto": "Piloto 2",
     "puntos": 80,
     "primeros": 20,
@@ -24,7 +24,7 @@
 {
     "campeonato": "I SISU CAMPEONATO 2026",
     "categoria": "FWD",
-    "imagen": "TROFEOS/REPSOL RALLY.png",
+    "imagen": "TROFEOS/TROFEO PRUEBA.png",
     "piloto": "Piloto 3",
     "puntos": 380,
     "primeros": 30,
@@ -35,7 +35,7 @@
 {
     "campeonato": "I SISU CAMPEONATO 2026",
     "categoria": "RWD",
-    "imagen": "TROFEOS/REPSOL RALLY.png",
+    "imagen": "TROFEOS/TROFEO PRUEBA.png",
     "piloto": "Piloto 4",
     "puntos": 480,
     "primeros": 4,
