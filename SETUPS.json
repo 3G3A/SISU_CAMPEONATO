@@ -53,5 +53,55 @@
     "coche": "Ford Escort MK II RS Grp4",
     "tipo": "Asfalto Liso",
     "archivo": "SETUPS/ASF_Liso_Ford_MK_Grp4.lsp"
+  },
+   {
+    "coche": "Mitsubishi Lancer Evo X R4",
+    "tipo": "Asfalto Liso",
+    "archivo": "SETUPS/A_L_MITSUBISHI_EVO_X.lsp"
+  },
+  {
+    "coche": "Mitsubishi Lancer Evo X R4",
+    "tipo": "Asfalto Bacheado",
+    "archivo": "SETUPS/A_B_MITSUGBISHI_EVO_X.lsp"
+  },
+  {
+    "coche": "Mitsubishi Lancer Evo X R4",
+    "tipo": "Tierra",
+    "archivo": "SETUPS/TIERRA_MITSUBISHI_EVO_X.lsp"
+  },
+  {
+    "coche": "Peugeot 106 Rally GrA",
+    "tipo": "Tierra",
+    "archivo": "SETUPS/TIERRA_206.lsp"
+  },
+    {
+    "coche": "Peugeot 106 Rally GrA",
+    "tipo": "Asfalto Bacheado",
+    "archivo": "SETUPS/ASF_BACHEADO_206.lsp"
+  },
+  {
+    "coche": "Peugeot 106 Rally GrA",
+    "tipo": "Asfalto Liso",
+    "archivo": "SETUPS/ASF_LISO_206.lsp"
+  },
+  {
+    "coche": "Skôda 130 RS Grp2",
+    "tipo": "Asfalto Helado",
+    "archivo": "SETUPS/ASF_HIELO_SK130.lsp"
+  },
+  {
+    "coche": "Skôda 130 RS Grp2",
+    "tipo": "Asfalto Liso",
+    "archivo": "SETUPS/ASF_LISO_SK130.lsp"
+  },
+  {
+    "coche": "Skôda 130 RS Grp2",
+    "tipo": "Tierra Bacheada",
+    "archivo": "SETUPS/T_BACH_SK130.lsp"
+  },
+  {
+    "coche": "Skôda 130 RS Grp2",
+    "tipo": "Tierra Lisa",
+    "archivo": "SETUPS/T_LISA_SK130.lsp"
   }
 ]
