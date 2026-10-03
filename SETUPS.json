@@ -48,5 +48,10 @@
     "coche": "Citröen C3 R5",
     "tipo": "Asfalto Liso",
     "archivo": "SETUPS/ASF_LISO_C3_R5.lsp"
+  },
+   {
+    "coche": "Ford Escort MK II RS Grp4",
+    "tipo": "Asfalto Liso",
+    "archivo": "SETUPS/ASF_Liso_Ford_MK_Grp4.lsp"
   }
 ]
